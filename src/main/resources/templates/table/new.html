@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New table</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/table/{id}(id=${table.getId()})}" th:object="${table}">
+    <label for="capacity">Enter capacity: </label>
+    <input type="text" th:field="*{capacity}" id="capacity"/>
+    <div style="color:red" th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}">Name Error</div>
+    <br/>
+    <label for="available">Enter available: </label>
+    <input type="text" th:field="*{available}" id="available"/>
+    <div style="color:red" th:if="${#fields.hasErrors('available')}" th:errors="*{available}">Age Error</div>
+    <br/>
+    <label for="time">Enter time: </label>
+    <input type="text" th:field="*{time}" id="time"/>
+    <div style="color:red" th:if="${#fields.hasErrors('time')}" th:errors="*{time}">Email Error</div>
+    <br/>
+    <input type="submit" value="Create"/>
+</form>
+
+</body>
+</html>

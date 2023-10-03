@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Yanformation</title>
+</head>
+<body>
+<h1>Подтверждение</h1>
+<p>Ваш заказ:</p>
+<p>Имя клиента: <span th:text="${person.name}"></span></p>
+<p>Номер телефона: <span th:text="${person.phone}"></span></p>
+<p>Время заказа: <span th:text="${table.time}"></span></p>
+<p>Количество человек: <span th:text="${table.capacity}"></span></p>
+<p>Номер столика: <span th:text="${person.tableId}"></span></p>
+
+<a href="/restaurant">Oк</a>
+
+<form method="get" action="/restaurant/cancel">
+    <input type="submit" value="Отменить">
+    <input type="hidden" name="personId" th:value="${person.id}"/>
+    <input type="hidden" name="tableId" th:value="${person.tableId}"/>
+</form>
+<br>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Select a Table</title>
+</head>
+<body>
+<div>
+<h1>Select a Table</h1>
+
+<ul>
+  <th:block th:each="table : ${suitableTables}">
+    <li>
+      <form method="get" action="confirmation">
+        <input type="hidden" name="tableId" th:value="${table.id}" />
+        <input type="hidden" name="name" th:value="${person.name}" />
+        <input type="hidden" name="phone" th:value="${person.phone}" />
+        <input type="hidden" name="capacity" th:value="${table.capacity}" />
+        <input type="hidden" name="time" th:value="${table.time}" />
+        <h3 th:text="'Table ' + ${table.id}"></h3>
+        <p>Capacity: <span th:text="${table.capacity}"></span></p>
+        <button type="submit">Выбрать стол</button>
+      </form>
+    </li>
+  </th:block>
+  <br>
+  <p th:text="${confirmationMessage}"></p>
+  <br>
+</ul>
+
+<br>
+  <a href="/restaurant">Back to home</a>
+
+</div>
+</body>
+</html>

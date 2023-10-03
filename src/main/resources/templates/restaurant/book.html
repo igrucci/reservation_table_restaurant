@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book a Table</title>
+</head>
+<body>
+
+<h1>Book a Table</h1>
+<form method="get" action="/restaurant/select" th:object="${person}">
+  <label for="time">Select Time:</label>
+  <select name="time" id="time">
+    <option value="15:00-17:00">15:00-17:00</option>
+    <option value="17:00-19:00">17:00-19:00</option>
+    <option value="19:00-21:00">19:00-21:00</option>
+  </select>
+  <br>
+  <label for="capacity">Number of Guests:</label>
+  <select name="capacity" id="capacity">
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <br>
+
+  <label for="name"></label><input type="text" name="name" id="name"/>
+  <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+  <br>
+  <label for="phone"></label><input type="text" name="phone" id="phone" />
+  <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name error</div>
+  <br>
+
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+  <input type="hidden" name="tableId" th:value="${table.id}" />
+</form>
+
+<br>
+<a href="/restaurant">Back to home</a>
+
+</body>
+</html>
