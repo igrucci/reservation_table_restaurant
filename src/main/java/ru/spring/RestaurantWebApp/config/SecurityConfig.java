@@ -27,16 +27,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
+
                 .antMatchers("/auth/login", "/auth/registration", "/error",
                         "/restaurant", "/restaurant/book", "/restaurant/select",
                         "/restaurant/confirmation", "restaurant/cancel", "/restaurant/home").permitAll()
                 .antMatchers("/office", "/office/admin", "/office/worker",
                       "/people", "people/edit", "people/index", "/people/index_worker",
-                        "/people/new", "/people/show", "/table",
+                        "/people/new", "/people/show", "/table", "/table/",
                         "/table/edit", "/table/index", "/table/index_worker",
                         "/table/new", "table/show").hasRole("ADMIN")
                 .antMatchers("/office/worker", "/table/index_worker", "/table/index_worker").hasAnyRole("USER", "ADMIN")
-
+                .anyRequest().permitAll()
                 .and()
                 .formLogin().loginPage("/auth/login")
                 .loginProcessingUrl("/process_login")
@@ -45,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/auth/login");
+                .logoutSuccessUrl("/auth/login").and().cors().and().csrf().disable();
     }
 
 

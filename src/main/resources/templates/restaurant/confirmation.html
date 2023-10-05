@@ -15,7 +15,7 @@
 
 <a href="/restaurant">Oк</a>
 
-<form method="get" action="/restaurant/cancel">
+<form method="post" action="/restaurant/cancel">
     <input type="submit" value="Отменить">
     <input type="hidden" name="personId" th:value="${person.id}"/>
     <input type="hidden" name="tableId" th:value="${person.tableId}"/>

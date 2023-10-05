@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.spring.RestaurantWebApp.models.Person;
 import ru.spring.RestaurantWebApp.models.TableRest;
 import ru.spring.RestaurantWebApp.services.PeopleService;
@@ -21,7 +18,6 @@ import java.util.List;
 @RequestMapping("/restaurant")
 public class RestaurantController {
 
-//    private final RestaurantDAO restaurantDAO;
     private final PeopleService peopleService;
     private final TableService tableService;
 
@@ -33,13 +29,6 @@ public class RestaurantController {
         this.tableService = tableService;
 
     }
-
-
-//
-//    @Autowired
-//    public RestaurantController(RestaurantDAO restaurantDAO) {
-//        this.restaurantDAO = restaurantDAO;
-//    }
 
     @GetMapping()
     public String home() {
@@ -57,7 +46,7 @@ public class RestaurantController {
         return "restaurant/book";
     }
 
-    @GetMapping("/select")
+    @PostMapping("/select")
     public String selectTable(@ModelAttribute("person") @Valid Person person,
                               BindingResult bindingResult,
                               @ModelAttribute("table") TableRest table,
@@ -81,7 +70,7 @@ public class RestaurantController {
         return "restaurant/select";
     }
 
-    @GetMapping("/confirmation")
+    @PostMapping("/confirmation")
     public String confirmBooking(@ModelAttribute("person") @Valid Person person,
 
                                  @RequestParam("tableId") int tableId,
@@ -96,19 +85,8 @@ public class RestaurantController {
         return "restaurant/confirmation";
     }
 
-//    @GetMapping("/confirmation")
-//    public String confirmation(Model model) {
-//        return "restaurant/confirmation";
-//    }
 
-    @GetMapping("/choose")
-    public String all(Model model) {
-        model.addAttribute("table", tableService.getTrueTables());
-        return "restaurant/choose";
-    }
-
-
-    @GetMapping("/cancel")
+    @PostMapping("/cancel")
     public String cancelBooking(@RequestParam("personId") int personId,
                                 @RequestParam("tableId") int tableId,
                                 @ModelAttribute("table") TableRest table,

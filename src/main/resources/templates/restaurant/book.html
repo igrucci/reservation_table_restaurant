@@ -7,7 +7,7 @@
 <body>
 
 <h1>Book a Table</h1>
-<form method="get" action="/restaurant/select" th:object="${person}">
+<form method="post" action="/restaurant/select" th:object="${person}">
   <label for="time">Select Time:</label>
   <select name="time" id="time">
     <option value="15:00-17:00">15:00-17:00</option>

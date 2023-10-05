@@ -11,7 +11,7 @@
 <ul>
   <th:block th:each="table : ${suitableTables}">
     <li>
-      <form method="get" action="confirmation">
+      <form method="post" action="confirmation">
         <input type="hidden" name="tableId" th:value="${table.id}" />
         <input type="hidden" name="name" th:value="${person.name}" />
         <input type="hidden" name="phone" th:value="${person.phone}" />

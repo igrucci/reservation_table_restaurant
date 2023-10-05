@@ -18,10 +18,6 @@ public class WorkerRest {
     @Column(name = "username")
     private String username;
 
-//    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
-//    @Column(name = "year_of_birth")
-//    private int yearOfBirth;
-
     @Column(name = "password")
     private String password;
 
@@ -34,7 +30,6 @@ public class WorkerRest {
 
     public WorkerRest(String username) {
         this.username = username;
-//        this.yearOfBirth = yearOfBirth;
     }
 
     public int getId() {
@@ -52,14 +47,6 @@ public class WorkerRest {
     public void setUsername(String username) {
         this.username = username;
     }
-
-//    public int getYearOfBirth() {
-//        return yearOfBirth;
-//    }
-//
-//    public void setYearOfBirth(int yearOfBirth) {
-//        this.yearOfBirth = yearOfBirth;
-//    }
 
     public String getPassword() {
         return password;
@@ -82,7 +69,6 @@ public class WorkerRest {
         return "Person{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-//                ", yearOfBirth=" + yearOfBirth +
                 ", password='" + password + '\'' +
                 '}';
     }
