@@ -5,9 +5,15 @@
     <title>Show</title>
 </head>
 <body>
-<p th:text="${ table.getTime()}">VALUE</p>
-<p th:text="${ table.isAvailable()}">VALUE</p>
-<p th:text="${table.getId()}">VALUE</p>
+<p th:text="'Номер столика: '+${table.getId()}">VALUE</p>
+</hl>
+<p th:text="'Время: '+${ table.getTime()}">VALUE</p>
+</hl>
+<p th:text="'Кол-во мест: '+${ table.getCapacity()}">VALUE</p>
+</hl>
+<p th:text="${table.isAvailable()} ? 'Свободен' : 'Занят'">VALUE</p>
+</hl>
+
 
 <a th:href="@{/table/{id}/edit(id=${table.getId()})}">Edit</a>
 

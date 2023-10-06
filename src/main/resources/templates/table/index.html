@@ -3,13 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
 
-<div th:each="table : ${table}">
-    <a th:href="@{/table/{id}(id=${table.getId()})}"
-       th:text="${table.getCapacity() + ', ' + table.getTime() + ', ' + table.isAvailable()}">table</a>
-</div>
+<table>
+    <thead>
+    <tr>
+        <th>Номер столика</th>
+        <th>Кол-во мест</th>
+        <th>Время</th>
+        <th>Занятость</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="table : ${table}" th:style="${table.isAvailable()} ? 'background-color: PaleGreen;' : 'background-color: LightSalmon;'">
+        <td>
+            <a th:href="@{/table/{id}(id=${table.getId()})}" th:text="${table.getId()}"></a>
+        </td>
+        <td th:text="${table.getCapacity()}"></td>
+        <td th:text="${table.getTime()}"></td>
+        <td th:text="${table.isAvailable()} ? 'Свободен' : 'Занят'"></td>
+    </tr>
+    </tbody>
+</table>
 
 <br/>
 <hr/>
