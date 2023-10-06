@@ -15,7 +15,7 @@
     <option value="19:00-21:00">19:00-21:00</option>
   </select>
   <br>
-  <label for="capacity">Number of Guests:</label>
+  <label for="capacity">Кол-во мест:</label>
   <select name="capacity" id="capacity">
     <option value="2">2</option>
     <option value="3">3</option>
@@ -30,8 +30,8 @@
   <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name error</div>
   <br>
 
-  <input type="submit" value="Submit">
-  <input type="reset" value="Reset">
+  <input type="submit" value="Продолжить">
+  <input type="reset" value="Отменить">
   <input type="hidden" name="tableId" th:value="${table.id}" />
 </form>
 
