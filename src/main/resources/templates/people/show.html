@@ -5,8 +5,9 @@
     <title>Show</title>
 </head>
 <body>
-<p th:text="${person.getName() + ', ' + person.getPhone()}">VALUE</p>
-<p th:text="${'Table: ' + person.getTableId()}">VALUE</p>
+<p th:text="${'Имя клиента: '+person.getName()}">VALUE</p>
+<p th:text="${'Забронировал столик: №' + person.getTableId()}">VALUE</p>
+<p th:text="${'Номер телефона: ' + person.getPhone()}">VALUE</p>
 <p th:text="${person.getId()}">VALUE</p>
 
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
