@@ -2,6 +2,7 @@ package ru.spring.RestaurantWebApp.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 
@@ -20,6 +21,7 @@ public class Person {
 
     @Column(name = "phone")
     @NotEmpty(message = "Phone should not be empty")
+    @Pattern(regexp="^\\+[0-9]{10}$", message="Некорректный формат номера телефона")
     private String phone;
 
     @Column(name = "table_id")
