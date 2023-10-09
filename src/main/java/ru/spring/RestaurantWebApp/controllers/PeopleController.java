@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.spring.RestaurantWebApp.models.Person;
+import ru.spring.RestaurantWebApp.models.TableRest;
 import ru.spring.RestaurantWebApp.services.PeopleService;
 
 import javax.validation.Valid;
