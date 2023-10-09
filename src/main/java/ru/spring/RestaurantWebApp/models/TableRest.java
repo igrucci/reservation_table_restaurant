@@ -17,7 +17,6 @@ public class TableRest {
     @Column(name = "capacity")
     private int capacity;
 
-
     @Column(name = "available")
 
     private boolean available;
