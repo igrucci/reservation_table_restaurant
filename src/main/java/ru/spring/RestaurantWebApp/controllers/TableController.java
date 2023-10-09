@@ -62,7 +62,6 @@ public class TableController {
         return "table/edit";
     }
 
-
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("table") @Valid TableRest table, BindingResult bindingResult,
                          @PathVariable("id") int id) {
