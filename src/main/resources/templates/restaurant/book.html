@@ -3,6 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Book a Table</title>
+  <style>
+    body {
+      background-color: #192f3f;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      color: #2980b9;
+    }
+    label {
+      color: #3498db;
+    }
+    select, input[type="text"] {
+      background-color: #34495e;
+      color: #ffffff;
+      border: 1px solid #2980b9;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    input[type="submit"], input[type="reset"] {
+      background-color: #3498db;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    input[type="submit"]:hover, input[type="reset"]:hover {
+      background-color: #2980b9;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .error-message {
+      color: #e74c3c;
+    }
+  </style>
 </head>
 <body>
 
@@ -10,6 +51,7 @@
 <form method="post" action="/restaurant/select" th:object="${person}">
   <label for="time">Select Time:</label>
   <select name="time" id="time">
+    <option value="13:00-15:00">13:00-17:00</option>
     <option value="15:00-17:00">15:00-17:00</option>
     <option value="17:00-19:00">17:00-19:00</option>
     <option value="19:00-21:00">19:00-21:00</option>
@@ -24,10 +66,10 @@
   <br>
 
   <label for="name"></label><input type="text" name="name" id="name"/>
-  <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+  <div class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
   <br>
   <label for="phone"></label><input type="text" name="phone" id="phone" />
-  <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name error</div>
+  <div class="error-message" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone error</div>
   <br>
 
   <input type="submit" value="Продолжить">

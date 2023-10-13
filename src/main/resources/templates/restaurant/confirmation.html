@@ -2,26 +2,57 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Yanformation</title>
+    <title>Confirmation</title>
+    <style>
+        body {
+            background-color: #192f3f;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #2980b9;
+        }
+        .confirmation-info {
+            background-color: #34495e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .confirmation-info p {
+            margin: 10px 0;
+        }
+        a, input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        a:hover, input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
 <h1>Подтверждение</h1>
-<p>Ваш заказ:</p>
-<p>Имя клиента: <span th:text="${person.name}"></span></p>
-<p>Номер телефона: <span th:text="${person.phone}"></span></p>
-<p>Время заказа: <span th:text="${table.time}"></span></p>
-<p>Количество человек: <span th:text="${table.capacity}"></span></p>
-<p>Номер столика: <span th:text="${person.tableId}"></span></p>
+<div class="confirmation-info">
+    <p>Ваш заказ:</p>
+    <p>Имя клиента: <span th:text="${person.name}"></span></p>
+    <p>Номер телефона: <span th:text="${person.phone}"></span></p>
+    <p>Время заказа: <span th:text="${table.time}"></span></p>
+    <p>Количество человек: <span th:text="${table.capacity}"></span></p>
+    <p>Номер столика: <span th:text="${person.tableId}"></span></p>
+</div>
 
 <a href="/restaurant">Oк</a>
-
+<br>
 <form method="post" action="/restaurant/cancel">
     <input type="submit" value="Отменить">
     <input type="hidden" name="personId" th:value="${person.id}"/>
     <input type="hidden" name="tableId" th:value="${person.tableId}"/>
 </form>
 <br>
-
-
 </body>
 </html>

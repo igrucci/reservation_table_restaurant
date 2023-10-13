@@ -3,34 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <title>Select a Table</title>
+  <style>
+    body {
+      background-color: #192f3f;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: row;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+    h1 {
+      color: #2980b9;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 20px;
+    }
+    h3 {
+      color: #3498db;
+    }
+    button {
+      background-color: #3498db;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .confirmation-message {
+      color: #e74c3c;
+    }
+    .image-container {
+      margin-right: 1000px;
+
+
+    }
+  </style>
 </head>
 <body>
-<div>
-<h1>Выбрать столик</h1>
+<div class="content">
+  <h1>Выбрать столик</h1>
 
-<ul>
-  <th:block th:each="table : ${suitableTables}">
-    <li>
-      <form method="post" action="confirmation">
-        <input type="hidden" name="tableId" th:value="${table.id}" />
-        <input type="hidden" name="name" th:value="${person.name}" />
-        <input type="hidden" name="phone" th:value="${person.phone}" />
-        <input type="hidden" name="capacity" th:value="${table.capacity}" />
-        <input type="hidden" name="time" th:value="${table.time}" />
-        <h3 th:text="'Cтолик ' + ${table.id}"></h3>
-        <p>Кол-во мест: <span th:text="${table.capacity}"></span></p>
-        <button type="submit">Выбрать стол</button>
-      </form>
-    </li>
-  </th:block>
-  <br>
-  <p th:text="${confirmationMessage}"></p>
-  <br>
-</ul>
+  <ul>
+    <th:block th:each="table : ${suitableTables}">
+      <li>
+        <form method="post" action="confirmation">
+          <input type="hidden" name="tableId" th:value="${table.id}" />
+          <input type="hidden" name="name" th:value="${person.name}" />
+          <input type="hidden" name="phone" th:value="${person.phone}" />
+          <input type="hidden" name="capacity" th:value="${table.capacity}" />
+          <input type="hidden" name="time" th:value="${table.time}" />
+          <h3 th:text="'Cтолик ' + ${table.id}"></h3>
+          <p>Кол-во мест: <span th:text="${table.capacity}"></span></p>
+          <button type="submit">Выбрать стол</button>
+        </form>
+      </li>
+    </th:block>
+  </ul>
 
-<br>
+  <br>
+  <p class="confirmation-message" th:text="${confirmationMessage}"></p>
+  <br>
+
   <a href="/restaurant">Back to home</a>
+</div>
 
+<div class="image-container">
+  <img src="https://ecdn.teacherspayteachers.com/thumbitem/Blue-Circle-Number-Labels-1657282126/original-308877-1.jpg" alt="Картинка" />
 </div>
 </body>
 </html>
